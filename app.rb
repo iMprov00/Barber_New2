@@ -17,6 +17,10 @@ end
 
 get '/visit' do
 	
+	file = File.open("public/user.txt", "a")
+	file.write("test")
+	file.close
+
  	erb :visit
 
 end
