@@ -38,12 +38,13 @@ post '/visit' do
 		end
 	end
 
-
-
-
 	file = File.open("public/user.txt", "a")
 	file.write("#{@username}, #{@number}, придет #{@datetime}\n")
 	file.close
+
+	@message = "Вы успешно записались!"
+
+	erb :visit
 
 end
 
