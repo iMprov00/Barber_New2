@@ -17,11 +17,33 @@ end
 
 get '/visit' do
 	
-	file = File.open("public/user.txt", "a")
-	file.write("test")
-	file.close
+
 
  	erb :visit
+
+end
+
+post '/visit' do 
+
+	@username = params[:username].to_s
+	@number = params[:number].to_s
+	@datetime = params[:datetime].to_s
+
+	input_user = {:username => "Введите имя!", :number => "Укажите ваш телефон для связи!",:datetime => "Вы не указали дату когда придете!"}
+
+	input_user.each do |key, values|
+		if params[key].to_s.strip.empty?
+			@error = input_user[key]
+			return erb :visit
+		end
+	end
+
+
+
+
+	file = File.open("public/user.txt", "a")
+	file.write("#{@username}, #{@number}, придет #{@datetime}\n")
+	file.close
 
 end
 
