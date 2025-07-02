@@ -29,6 +29,7 @@ post '/visit' do
 	@number = params[:number].to_s
 	@datetime = params[:datetime].to_s
 	@barber = params[:barber].to_s
+	@color = params[:color]
 
 	input_user = {:username => "Введите имя!", :number => "Укажите ваш телефон для связи!",:datetime => "Вы не указали дату когда придете!", :barber => "Вы не выбрали парикмахера!"}
 
@@ -40,7 +41,7 @@ post '/visit' do
 	end
 
 	file = File.open("public/user.txt", "a")
-	file.write("#{@username}, #{@number}, придет #{@datetime}\n")
+	file.write("#{@username}, #{@number}, придет #{@datetime}, цвет краски #{@color}\n")
 	file.close
 
 	@message = "Вы успешно записались!"
