@@ -4,18 +4,33 @@
 
 <form action="/visit" method="POST" role="form">
   <br/>
+
   <div class="mb-3">
     <label class="form-label">Ваше имя</label>
     <input type="text" class="form-control" name="username" placeholder="Введите ваше имя">
   </div>
+
   <div class="mb-3">
     <label class="form-label">Номер телефона</label>
     <input type="text" class="form-control"  name="number" placeholder="Введите ваш номер телефона">
   </div>
+
   <div class="mb-3">
     <label  class="form-label">Когда вас ждать?</label>
     <input type="text" class="form-control" name="datetime" placeholder="Введите дату и время записи">
   </div>
+
+  
+
+  <div class="mb-3">
+    <label  class="form-label">Выберите парикмахера:</label>
+    <select class="form-control">
+      <option value="1">Максим</option>
+      <option value="2">Виталий</option>
+      <option value="3">Евгений</option>
+    </select>
+  </div>
+
    <br/>
   <button type="submit" class="btn btn-primary">Записаться</button>
 </form>
