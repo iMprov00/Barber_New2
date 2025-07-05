@@ -25,9 +25,9 @@
   <div class="mb-3">
     <label  class="form-label">Выберите парикмахера:</label>
     <select name="barber" class="form-control">
-      <option>Максим</option>
-      <option>Виталий</option>
-      <option>Евгений</option>
+      <option <%= @barber == 'Максим' ? 'selected' : ''%>>Максим</option>
+      <option <%= @barber == 'Виталий' ? 'selected' : ''%>>Виталий</option>
+      <option <%= @barber == 'Евгений' ? 'selected' : ''%>>Евгений</option>
     </select>
   </div>
 
