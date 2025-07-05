@@ -5,8 +5,8 @@ require 'sqlite3'
 
 configure do 
 
-	@db = SQLite3::Database.new 'barbershop.db'
-	@db.execute 'CREATE TABLE IF NOT EXISTS
+	db = SQLite3::Database.new 'barbershop.db'
+	db.execute 'CREATE TABLE IF NOT EXISTS
 	"Users"
 	(
 		"id" INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -18,6 +18,8 @@ configure do
 	)'
 
 end
+
+
 
 get '/' do
 
@@ -59,6 +61,21 @@ post '/visit' do
 	file = File.open("public/user.txt", "a")
 	file.write("#{@username}, #{@number}, придет #{@datetime}, цвет краски #{@color}\n")
 	file.close
+	
+	db = SQLite3::Database.new 'barbershop.db'
+	db.execute 'insert into
+
+		Users (
+			username,
+			phone,
+			datestamp,
+			barber,
+			color
+		)
+		values 
+		(
+			?, ?, ?, ?, ?
+		)', [@username, @phone, @datetime, @barber, @color]
 
 	@message = "Вы успешно записались!"
 
