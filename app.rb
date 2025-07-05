@@ -88,3 +88,9 @@ get '/contacts' do
  	erb :contacts
 
 end
+
+get '/showusers' do 
+
+	erb :showusers
+
+end
