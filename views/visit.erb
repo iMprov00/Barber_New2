@@ -17,7 +17,7 @@
 
   <div class="mb-3">
     <label  class="form-label">Когда вас ждать?</label>
-    <input type="text" class="form-control" name="datetime" placeholder="Введите дату и время записи" value="<%= @datetime %>">
+    <input id="datetimepicker" type="text" class="form-control" name="datetime" placeholder="Введите дату и время записи" value="<%= @datetime %>">
   </div>
 
   
@@ -69,6 +69,7 @@
   
 $(function(){
   $('#color ').simplecolorpicker(); 
+  $('#datetimepicker').datetimepicker();
 });
 
 </script>
