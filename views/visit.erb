@@ -24,10 +24,22 @@
 
   <div class="mb-3">
     <label  class="form-label">Выберите парикмахера:</label>
+    <%# 
+      Создаем массив барберов прямо в шаблоне.
+      В реальных проектах лучше выносить такие данные в контроллер или конфиг.
+    %>
+    <% barbers = ['Максим', 'Виталий', 'Евгений', 'Иван', 'Анна'] %>
+
+    <%# Выпадающий список (<select>) для выбора барбера %>
     <select name="barber" class="form-control">
-      <option <%= @barber == 'Максим' ? 'selected' : ''%>>Максим</option>
-      <option <%= @barber == 'Виталий' ? 'selected' : ''%>>Виталий</option>
-      <option <%= @barber == 'Евгений' ? 'selected' : ''%>>Евгений</option>
+      <%# 
+        Перебираем массив барберов и создаем <option> для каждого.
+        Если @barber (текущий выбранный барбер) совпадает с элементом массива,
+        добавляем атрибут 'selected', чтобы выбрать его по умолчанию.
+      %>
+      <% barbers.each do |barber| %>
+        <option <%= @barber == barber ? 'selected' : '' %>><%= barber %></option>
+      <% end %>
     </select>
   </div>
 
