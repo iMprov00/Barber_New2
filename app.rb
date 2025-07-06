@@ -41,13 +41,17 @@ end
 
 get '/visit' do
 	
-	# db = SQLite3::Database.new 'barbershop.db'
+	db = SQLite3::Database.new 'barbershop.db'
 
-	# db.execute 'select * from Barber' do |row|
+	db.results_as_hash = true
 
-	# 	@barbers << row
+	@barbers = []
 
-	# end
+	db.execute 'select * from Barber' do |row|
+
+		@barbers << row['barber']
+
+	end
 
  	erb :visit
 
