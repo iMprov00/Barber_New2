@@ -1,4 +1,23 @@
-<p><% @result.each do |results| %>
-	<%= results %><br>
-	<%end%>
-</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Имя</th>
+			<th>Телефон</th>
+			<th>Дата записи</th>
+			<th>Парикмахер</th>
+			<th>Цвет</th>
+		</tr>
+	</thead>
+
+	<body>
+		<% @result.each do |row| %>
+			<tr>
+				<td><%= row['username'] %></td>
+				<td><%= row['phone'] %></td>
+				<td><%= row['datestamp'] %></td>
+				<td><%= row['barber'] %></td>
+				<td><%= row['color'] %></td>
+			</tr>
+		<% end %>
+	</body>
+</table>	
