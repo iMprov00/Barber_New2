@@ -17,6 +17,12 @@ configure do
 		"color" TEXT
 	)'
 
+		db.execute 'CREATE TABLE IF NOT EXISTS
+	"Barber"
+	(
+		"barber" TEXT
+	)'
+
 end
 
 
@@ -35,7 +41,13 @@ end
 
 get '/visit' do
 	
+	# db = SQLite3::Database.new 'barbershop.db'
 
+	# db.execute 'select * from Barber' do |row|
+
+	# 	@barbers << row
+
+	# end
 
  	erb :visit
 
@@ -90,6 +102,15 @@ get '/contacts' do
 end
 
 get '/showusers' do 
+
+	db = SQLite3::Database.new 'barbershop.db'
+	db.results_as_hash = true
+
+	@result = []
+
+	db.execute 'select * from Users' do |row|
+		@result << "#{row['username']}, номер телефона #{row['phone']}, придет #{row['datestamp']} к парикмахеру #{row['barber']}, цвет: #{row['color']}"
+	end
 
 	erb :showusers
 
