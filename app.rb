@@ -91,7 +91,7 @@ post '/visit' do
 		values 
 		(
 			?, ?, ?, ?, ?
-		)', [@username, @phone, @datetime, @barber, @color]
+		)', [@username, @number, @datetime, @barber, @color]
 
 	@message = "Вы успешно записались!"
 
