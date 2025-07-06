@@ -112,9 +112,7 @@ get '/showusers' do
 
 	@result = []
 
-	db.execute 'select * from Users' do |row|
-		@result << "#{row['username']}, номер телефона #{row['phone']}, придет #{row['datestamp']} к парикмахеру #{row['barber']}, цвет: #{row['color']}"
-	end
+	@result = db.execute 'select * from Users'
 
 	erb :showusers
 
